@@ -284,26 +284,99 @@ class EnglishLearningBot {
         };
     }
 
-    createRevisionQuestions(startLesson, endLesson) {
-        const questions = [];
-        for (let i = startLesson; i <= endLesson; i++) {
-            const lesson = this.lessons[i];
-            if (lesson && lesson.length > 0) {
-                // Take 2-3 questions from each lesson for revision
-                const sampleSize = Math.min(3, lesson.length);
-                for (let j = 0; j < sampleSize; j++) {
-                    if (j < lesson.length) {
-                        questions.push({
-                            ...lesson[j],
-                            lesson: i
-                        });
-                    }
-                }
-            }
-        }
-        return questions;
+   createRevisionQuestions(startLesson, endLesson) {
+    const questions = [];
+    
+    // Create sample questions directly instead of referencing other lessons
+    if (startLesson === 1 && endLesson === 8) {
+        // Revision 1: Lessons 1-8 sample questions
+        return [
+            { question: "🔤 Which letter comes after 'A'?", answer: "b", lesson: 1 },
+            { question: "👤 ___ am a student", answer: "i", lesson: 2 },
+            { question: "🎯 She gave ___ a book", answer: "me", lesson: 3 },
+            { question: "🔄 I ___ happy", answer: "am", lesson: 4 },
+            { question: "🔢 Write '25' in words", answer: "twenty five", lesson: 5 },
+            { question: "📝 This is ___ book", answer: "my", lesson: 6 },
+            { question: "📝 The book is ___", answer: "mine", lesson: 7 },
+            { question: "👉 ___ book is interesting", answer: "this", lesson: 8 },
+            { question: "🔤 Which letter comes before 'D'?", answer: "c", lesson: 1 },
+            { question: "👤 ___ is my friend", answer: "he", lesson: 2 },
+            { question: "🎯 I saw ___ yesterday", answer: "him", lesson: 3 },
+            { question: "🔄 She ___ a doctor", answer: "is", lesson: 4 },
+            { question: "🔢 What is '100' in words?", answer: "one hundred", lesson: 5 },
+            { question: "📝 That is ___ car", answer: "your", lesson: 6 },
+            { question: "📝 The car is ___", answer: "yours", lesson: 7 },
+            { question: "👉 ___ books are heavy", answer: "these", lesson: 8 }
+        ];
+    } else if (startLesson === 9 && endLesson === 16) {
+        // Revision 2: Lessons 9-16 sample questions
+        return [
+            { question: "👉 ___ is my book", answer: "this", lesson: 9 },
+            { question: "🔄 I hurt ___", answer: "myself", lesson: 10 },
+            { question: "⏰ She ___ here yesterday", answer: "was", lesson: 11 },
+            { question: "📅 Day after Monday?", answer: "tuesday", lesson: 12 },
+            { question: "🔄 I have ___ waiting", answer: "been", lesson: 13 },
+            { question: "📖 I saw ___ elephant", answer: "an", lesson: 14 },
+            { question: "👤 ___ am learning", answer: "i", lesson: 15 },
+            { question: "👤 ___ are nice", answer: "you", lesson: 16 },
+            { question: "👉 ___ are my friends", answer: "these", lesson: 9 },
+            { question: "🔄 She taught ___", answer: "herself", lesson: 10 },
+            { question: "⏰ They ___ late tomorrow", answer: "will be", lesson: 11 },
+            { question: "📅 Day before Sunday?", answer: "saturday", lesson: 12 },
+            { question: "🔄 She is ___ her homework", answer: "doing", lesson: 13 },
+            { question: "📖 ___ sun is bright", answer: "the", lesson: 14 },
+            { question: "👤 She told ___", answer: "me", lesson: 15 },
+            { question: "👤 I see ___", answer: "you", lesson: 16 }
+        ];
+    } else if (startLesson === 17 && endLesson === 23) {
+        // Revision 3: Lessons 17-23 sample questions
+        return [
+            { question: "👤 ___ is tall", answer: "he", lesson: 17 },
+            { question: "👤 ___ is smart", answer: "she", lesson: 18 },
+            { question: "👤 ___ is raining", answer: "it", lesson: 19 },
+            { question: "👥 ___ are friends", answer: "we", lesson: 20 },
+            { question: "👥 ___ are coming", answer: "they", lesson: 21 },
+            { question: "❓ ___ you like coffee?", answer: "do", lesson: 22 },
+            { question: "🔧 I ___ speak English", answer: "can", lesson: 23 },
+            { question: "👤 That is ___ book", answer: "his", lesson: 17 },
+            { question: "👤 I see ___", answer: "her", lesson: 18 },
+            { question: "👤 The dog ate ___ food", answer: "its", lesson: 19 },
+            { question: "👥 This is ___ house", answer: "our", lesson: 20 },
+            { question: "👥 That is ___ house", answer: "their", lesson: 21 },
+            { question: "❓ ___ she speak English?", answer: "does", lesson: 22 },
+            { question: "🔧 You ___ study now", answer: "should", lesson: 23 }
+        ];
+    } else if (startLesson === 1 && endLesson === 23) {
+        // Final Revision: Mixed questions from all lessons
+        return [
+            { question: "🔤 Which letter comes after 'A'?", answer: "b", lesson: 1 },
+            { question: "👤 ___ am a student", answer: "i", lesson: 2 },
+            { question: "🎯 She gave ___ a book", answer: "me", lesson: 3 },
+            { question: "🔄 I ___ happy", answer: "am", lesson: 4 },
+            { question: "🔢 Write '25' in words", answer: "twenty five", lesson: 5 },
+            { question: "📝 This is ___ book", answer: "my", lesson: 6 },
+            { question: "📝 The book is ___", answer: "mine", lesson: 7 },
+            { question: "👉 ___ book is interesting", answer: "this", lesson: 8 },
+            { question: "👉 ___ is my book", answer: "this", lesson: 9 },
+            { question: "🔄 I hurt ___", answer: "myself", lesson: 10 },
+            { question: "⏰ She ___ here yesterday", answer: "was", lesson: 11 },
+            { question: "📅 Day after Monday?", answer: "tuesday", lesson: 12 },
+            { question: "🔄 I have ___ waiting", answer: "been", lesson: 13 },
+            { question: "📖 I saw ___ elephant", answer: "an", lesson: 14 },
+            { question: "👤 ___ am learning", answer: "i", lesson: 15 },
+            { question: "👤 ___ are nice", answer: "you", lesson: 16 },
+            { question: "👤 ___ is tall", answer: "he", lesson: 17 },
+            { question: "👤 ___ is smart", answer: "she", lesson: 18 },
+            { question: "👤 ___ is raining", answer: "it", lesson: 19 },
+            { question: "👥 ___ are friends", answer: "we", lesson: 20 },
+            { question: "👥 ___ are coming", answer: "they", lesson: 21 },
+            { question: "❓ ___ you like coffee?", answer: "do", lesson: 22 },
+            { question: "🔧 I ___ speak English", answer: "can", lesson: 23 }
+        ];
     }
-
+    
+    return questions;
+}
     handleMessage(userId, message) {
         if (!this.users.has(userId)) {
             this.users.set(userId, {
@@ -557,3 +630,4 @@ const PORT = process.env.PORT || 10000;
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`🚀 Bot server running on port ${PORT}`);
 });
+
