@@ -60,97 +60,97 @@ class EnglishLearningBot {
     createLessons() {
         return {
             // ========== CORE LESSONS 1-5 ==========
-            1: [ // Alphabet
-                { question: "🔤 Which letter comes after 'A'?", answer: "b" },
-                { question: "🔤 Which letter comes after 'B'?", answer: "c" },
-                { question: "🔤 Which letter comes before 'D'?", answer: "c" },
-                { question: "🔤 Which letter is between 'E' and 'G'?", answer: "f" },
-                { question: "🔤 What's the first letter?", answer: "a" },
-                { question: "🔤 What's the last letter?", answer: "z" },
-                { question: "🔤 Which letter comes after 'X'?", answer: "y" }
+            1: [ // Alphabet - CLEAR questions
+                { question: "🔤 Which letter comes immediately after 'A' in the alphabet?", answer: "b" },
+                { question: "🔤 Which letter comes right after 'B'?", answer: "c" },
+                { question: "🔤 Which letter comes directly before 'D'?", answer: "c" },
+                { question: "🔤 Which single letter is between 'E' and 'G'?", answer: "f" },
+                { question: "🔤 What is the very first letter of the English alphabet?", answer: "a" },
+                { question: "🔤 What is the final letter of the alphabet?", answer: "z" },
+                { question: "🔤 Which letter comes after 'X' in alphabetical order?", answer: "y" }
             ],
-            2: [ // Subject Pronouns
-                { question: "👤 ___ am a student", answer: "i" },
-                { question: "👤 ___ is my friend", answer: "he" },
-                { question: "👤 ___ is a teacher", answer: "she" },
-                { question: "👤 ___ are learning", answer: "we" },
-                { question: "👤 ___ are my friends", answer: "they" },
-                { question: "👤 ___ is a book", answer: "it" },
-                { question: "👤 ___ are smart", answer: "you" }
+            2: [ // Subject Pronouns - CLEAR context
+                { question: "👤 Complete: ___ am studying English right now", answer: "i" },
+                { question: "👤 ___ is playing football in the park", answer: "he" },
+                { question: "👤 ___ is teaching the class today", answer: "she" },
+                { question: "👤 ___ are going to the cinema together", answer: "we" },
+                { question: "👤 ___ are waiting for the bus over there", answer: "they" },
+                { question: "👤 ___ is raining outside right now", answer: "it" },
+                { question: "👤 ___ are doing a great job with your studies", answer: "you" }
             ],
-            3: [ // Object Pronouns
-                { question: "🎯 She gave ___ a book", answer: "me" },
-                { question: "🎯 I saw ___ yesterday", answer: "him" },
-                { question: "🎯 Tell ___ the truth", answer: "me" },
-                { question: "🎯 We called ___", answer: "them" },
-                { question: "🎯 He helped ___", answer: "us" },
-                { question: "🎯 I like ___", answer: "her" },
-                { question: "🎯 Look at ___", answer: "it" }
+            3: [ // Object Pronouns - SPECIFIC context
+                { question: "🎯 Sarah gave the book to ___ (referring to yourself)", answer: "me" },
+                { question: "🎯 I saw John yesterday and waved to ___", answer: "him" },
+                { question: "🎯 Please tell ___ the truth about what happened", answer: "me" },
+                { question: "🎯 We called our friends and invited ___ to the party", answer: "them" },
+                { question: "🎯 He helped all of ___ with our homework", answer: "us" },
+                { question: "🎯 I really like Maria and enjoy talking to ___", answer: "her" },
+                { question: "🎯 Look at that beautiful painting - admire ___", answer: "it" }
             ],
-            4: [ // Verb To Be
-                { question: "🔄 I ___ happy", answer: "am" },
-                { question: "🔄 She ___ a doctor", answer: "is" },
-                { question: "🔄 They ___ students", answer: "are" },
-                { question: "🔄 We ___ friends", answer: "are" },
-                { question: "🔄 He ___ tall", answer: "is" },
-                { question: "🔄 It ___ cold", answer: "is" },
-                { question: "🔄 You ___ welcome", answer: "are" }
+            4: [ // Verb To Be - CLEAR context
+                { question: "🔄 Right now, I ___ feeling very happy", answer: "am" },
+                { question: "🔄 She ___ working as a doctor at the hospital", answer: "is" },
+                { question: "🔄 They ___ studying English in this classroom", answer: "are" },
+                { question: "🔄 We ___ best friends since childhood", answer: "are" },
+                { question: "🔄 He ___ very tall for his age", answer: "is" },
+                { question: "🔄 It ___ getting dark outside now", answer: "is" },
+                { question: "🔄 You ___ doing excellent work in this course", answer: "are" }
             ],
-            5: [ // Numbers 1-1000
-                { question: "🔢 Write '25' in words", answer: "twenty five" },
-                { question: "🔢 What is '100' in words?", answer: "one hundred" },
-                { question: "🔢 Write '999' in words", answer: "nine hundred ninety nine" },
-                { question: "🔢 What is '50' in words?", answer: "fifty" },
-                { question: "🔢 Write '750' in words", answer: "seven hundred fifty" },
-                { question: "🔢 What is '300' in words?", answer: "three hundred" },
-                { question: "🔢 Write '1,000' in words", answer: "one thousand" }
+            5: [ // Numbers 1-1000 - CLEAR format
+                { question: "🔢 Write the number 25 in words", answer: "twenty five" },
+                { question: "🔢 Write the number 100 in words", answer: "one hundred" },
+                { question: "🔢 Write the number 999 in words", answer: "nine hundred ninety nine" },
+                { question: "🔢 Write the number 50 in words", answer: "fifty" },
+                { question: "🔢 Write the number 750 in words", answer: "seven hundred fifty" },
+                { question: "🔢 Write the number 300 in words", answer: "three hundred" },
+                { question: "🔢 Write the number 1000 in words", answer: "one thousand" }
             ],
 
             // ========== LESSONS 6-10 ==========
-            6: [ // Possessive Adjectives
-                { question: "📝 This is ___ book", answer: "my" },
-                { question: "📝 That is ___ car", answer: "your" },
-                { question: "📝 This is ___ house", answer: "his" },
-                { question: "📝 That is ___ bag", answer: "her" },
-                { question: "📝 This is ___ school", answer: "our" },
-                { question: "📝 That is ___ garden", answer: "their" },
-                { question: "📝 This is ___ tail", answer: "its" }
+            6: [ // Possessive Adjectives - CLEAR context
+                { question: "📝 This is ___ English book that I bought yesterday", answer: "my" },
+                { question: "📝 Is that ___ car parked outside?", answer: "your" },
+                { question: "📝 This is ___ house on the corner", answer: "his" },
+                { question: "📝 That is ___ bag on the chair", answer: "her" },
+                { question: "📝 This is ___ school where we study", answer: "our" },
+                { question: "📝 That is ___ garden with the beautiful flowers", answer: "their" },
+                { question: "📝 The cat is washing ___ face with its paw", answer: "its" }
             ],
-            7: [ // Possessive Pronouns
-                { question: "📝 The book is ___", answer: "mine" },
-                { question: "📝 The car is ___", answer: "yours" },
-                { question: "📝 The house is ___", answer: "his" },
-                { question: "📝 The bag is ___", answer: "hers" },
-                { question: "📝 The school is ___", answer: "ours" },
-                { question: "📝 The garden is ___", answer: "theirs" },
-                { question: "📝 This seat is ___", answer: "yours" }
+            7: [ // Possessive Pronouns - CLEAR context
+                { question: "📝 This English book is ___ (it belongs to me)", answer: "mine" },
+                { question: "📝 That red car is ___ (it belongs to you)", answer: "yours" },
+                { question: "📝 The big house is ___ (it belongs to him)", answer: "his" },
+                { question: "📝 This handbag is ___ (it belongs to her)", answer: "hers" },
+                { question: "📝 The school building is ___ (it belongs to us)", answer: "ours" },
+                { question: "📝 That beautiful garden is ___ (it belongs to them)", answer: "theirs" },
+                { question: "📝 This seat here is ___ (it's reserved for you)", answer: "yours" }
             ],
-            8: [ // Demonstrative Adjectives
-                { question: "👉 ___ book is interesting", answer: "this" },
-                { question: "👉 ___ books are heavy", answer: "these" },
-                { question: "👉 ___ car is fast", answer: "that" },
-                { question: "👉 ___ houses are big", answer: "those" },
-                { question: "👉 ___ phone is mine", answer: "this" },
-                { question: "👉 ___ dogs are friendly", answer: "those" },
-                { question: "👉 ___ student is smart", answer: "that" }
+            8: [ // Demonstrative Adjectives - CLEAR proximity
+                { question: "👉 ___ book right here is very interesting", answer: "this" },
+                { question: "👉 ___ books on this table are quite heavy", answer: "these" },
+                { question: "👉 ___ car over there is very fast", answer: "that" },
+                { question: "👉 ___ houses across the street are very big", answer: "those" },
+                { question: "👉 ___ phone in my hand is mine", answer: "this" },
+                { question: "👉 ___ dogs in that yard are very friendly", answer: "those" },
+                { question: "👉 ___ student at the back of the class is very smart", answer: "that" }
             ],
-            9: [ // Demonstrative Pronouns
-                { question: "👉 ___ is my book", answer: "this" },
-                { question: "👉 ___ are my friends", answer: "these" },
-                { question: "👉 ___ is your car", answer: "that" },
-                { question: "👉 ___ are their houses", answer: "those" },
-                { question: "👉 ___ is delicious", answer: "this" },
-                { question: "👉 ___ are expensive", answer: "those" },
-                { question: "👉 ___ is difficult", answer: "that" }
+            9: [ // Demonstrative Pronouns - CLEAR context
+                { question: "👉 ___ is my favorite English book", answer: "this" },
+                { question: "👉 ___ are my best friends from school", answer: "these" },
+                { question: "👉 ___ is your car parked outside", answer: "that" },
+                { question: "👉 ___ are their new houses on the hill", answer: "those" },
+                { question: "👉 ___ food here is absolutely delicious", answer: "this" },
+                { question: "👉 ___ shoes in the window are very expensive", answer: "those" },
+                { question: "👉 ___ math problem is quite difficult to solve", answer: "that" }
             ],
-            10: [ // Reflexive Pronouns
-                { question: "🔄 I hurt ___", answer: "myself" },
-                { question: "🔄 She taught ___", answer: "herself" },
-                { question: "🔄 He built it ___", answer: "himself" },
-                { question: "🔄 We enjoyed ___", answer: "ourselves" },
-                { question: "🔄 They prepared ___", answer: "themselves" },
-                { question: "🔄 You should believe in ___", answer: "yourself" },
-                { question: "🔄 The cat cleaned ___", answer: "itself" }
+            10: [ // Reflexive Pronouns - CLEAR actions
+                { question: "🔄 I accidentally cut ___ while cooking", answer: "myself" },
+                { question: "🔄 She taught ___ to play the piano", answer: "herself" },
+                { question: "🔄 He built the entire house by ___", answer: "himself" },
+                { question: "🔄 We really enjoyed ___ at the party", answer: "ourselves" },
+                { question: "🔄 They prepared ___ for the difficult exam", answer: "themselves" },
+                { question: "🔄 You should believe in ___ and your abilities", answer: "yourself" },
+                { question: "🔄 The cat is cleaning ___ with its tongue", answer: "itself" }
             ],
 
             // ========== LESSONS 11-15 ==========
@@ -284,99 +284,67 @@ class EnglishLearningBot {
         };
     }
 
-   createRevisionQuestions(startLesson, endLesson) {
-    const questions = [];
-    
-    // Create sample questions directly instead of referencing other lessons
-    if (startLesson === 1 && endLesson === 8) {
-        // Revision 1: Lessons 1-8 sample questions
-        return [
-            { question: "🔤 Which letter comes after 'A'?", answer: "b", lesson: 1 },
-            { question: "👤 ___ am a student", answer: "i", lesson: 2 },
-            { question: "🎯 She gave ___ a book", answer: "me", lesson: 3 },
-            { question: "🔄 I ___ happy", answer: "am", lesson: 4 },
-            { question: "🔢 Write '25' in words", answer: "twenty five", lesson: 5 },
-            { question: "📝 This is ___ book", answer: "my", lesson: 6 },
-            { question: "📝 The book is ___", answer: "mine", lesson: 7 },
-            { question: "👉 ___ book is interesting", answer: "this", lesson: 8 },
-            { question: "🔤 Which letter comes before 'D'?", answer: "c", lesson: 1 },
-            { question: "👤 ___ is my friend", answer: "he", lesson: 2 },
-            { question: "🎯 I saw ___ yesterday", answer: "him", lesson: 3 },
-            { question: "🔄 She ___ a doctor", answer: "is", lesson: 4 },
-            { question: "🔢 What is '100' in words?", answer: "one hundred", lesson: 5 },
-            { question: "📝 That is ___ car", answer: "your", lesson: 6 },
-            { question: "📝 The car is ___", answer: "yours", lesson: 7 },
-            { question: "👉 ___ books are heavy", answer: "these", lesson: 8 }
-        ];
-    } else if (startLesson === 9 && endLesson === 16) {
-        // Revision 2: Lessons 9-16 sample questions
-        return [
-            { question: "👉 ___ is my book", answer: "this", lesson: 9 },
-            { question: "🔄 I hurt ___", answer: "myself", lesson: 10 },
-            { question: "⏰ She ___ here yesterday", answer: "was", lesson: 11 },
-            { question: "📅 Day after Monday?", answer: "tuesday", lesson: 12 },
-            { question: "🔄 I have ___ waiting", answer: "been", lesson: 13 },
-            { question: "📖 I saw ___ elephant", answer: "an", lesson: 14 },
-            { question: "👤 ___ am learning", answer: "i", lesson: 15 },
-            { question: "👤 ___ are nice", answer: "you", lesson: 16 },
-            { question: "👉 ___ are my friends", answer: "these", lesson: 9 },
-            { question: "🔄 She taught ___", answer: "herself", lesson: 10 },
-            { question: "⏰ They ___ late tomorrow", answer: "will be", lesson: 11 },
-            { question: "📅 Day before Sunday?", answer: "saturday", lesson: 12 },
-            { question: "🔄 She is ___ her homework", answer: "doing", lesson: 13 },
-            { question: "📖 ___ sun is bright", answer: "the", lesson: 14 },
-            { question: "👤 She told ___", answer: "me", lesson: 15 },
-            { question: "👤 I see ___", answer: "you", lesson: 16 }
-        ];
-    } else if (startLesson === 17 && endLesson === 23) {
-        // Revision 3: Lessons 17-23 sample questions
-        return [
-            { question: "👤 ___ is tall", answer: "he", lesson: 17 },
-            { question: "👤 ___ is smart", answer: "she", lesson: 18 },
-            { question: "👤 ___ is raining", answer: "it", lesson: 19 },
-            { question: "👥 ___ are friends", answer: "we", lesson: 20 },
-            { question: "👥 ___ are coming", answer: "they", lesson: 21 },
-            { question: "❓ ___ you like coffee?", answer: "do", lesson: 22 },
-            { question: "🔧 I ___ speak English", answer: "can", lesson: 23 },
-            { question: "👤 That is ___ book", answer: "his", lesson: 17 },
-            { question: "👤 I see ___", answer: "her", lesson: 18 },
-            { question: "👤 The dog ate ___ food", answer: "its", lesson: 19 },
-            { question: "👥 This is ___ house", answer: "our", lesson: 20 },
-            { question: "👥 That is ___ house", answer: "their", lesson: 21 },
-            { question: "❓ ___ she speak English?", answer: "does", lesson: 22 },
-            { question: "🔧 You ___ study now", answer: "should", lesson: 23 }
-        ];
-    } else if (startLesson === 1 && endLesson === 23) {
-        // Final Revision: Mixed questions from all lessons
-        return [
-            { question: "🔤 Which letter comes after 'A'?", answer: "b", lesson: 1 },
-            { question: "👤 ___ am a student", answer: "i", lesson: 2 },
-            { question: "🎯 She gave ___ a book", answer: "me", lesson: 3 },
-            { question: "🔄 I ___ happy", answer: "am", lesson: 4 },
-            { question: "🔢 Write '25' in words", answer: "twenty five", lesson: 5 },
-            { question: "📝 This is ___ book", answer: "my", lesson: 6 },
-            { question: "📝 The book is ___", answer: "mine", lesson: 7 },
-            { question: "👉 ___ book is interesting", answer: "this", lesson: 8 },
-            { question: "👉 ___ is my book", answer: "this", lesson: 9 },
-            { question: "🔄 I hurt ___", answer: "myself", lesson: 10 },
-            { question: "⏰ She ___ here yesterday", answer: "was", lesson: 11 },
-            { question: "📅 Day after Monday?", answer: "tuesday", lesson: 12 },
-            { question: "🔄 I have ___ waiting", answer: "been", lesson: 13 },
-            { question: "📖 I saw ___ elephant", answer: "an", lesson: 14 },
-            { question: "👤 ___ am learning", answer: "i", lesson: 15 },
-            { question: "👤 ___ are nice", answer: "you", lesson: 16 },
-            { question: "👤 ___ is tall", answer: "he", lesson: 17 },
-            { question: "👤 ___ is smart", answer: "she", lesson: 18 },
-            { question: "👤 ___ is raining", answer: "it", lesson: 19 },
-            { question: "👥 ___ are friends", answer: "we", lesson: 20 },
-            { question: "👥 ___ are coming", answer: "they", lesson: 21 },
-            { question: "❓ ___ you like coffee?", answer: "do", lesson: 22 },
-            { question: "🔧 I ___ speak English", answer: "can", lesson: 23 }
-        ];
+    createRevisionQuestions(startLesson, endLesson) {
+        if (startLesson === 1 && endLesson === 8) {
+            // Revision 1: Lessons 1-8 - 10 questions
+            return [
+                { question: "🔤 Which letter comes immediately after 'A' in the alphabet?", answer: "b", lesson: 1 },
+                { question: "👤 Complete: ___ am studying English right now", answer: "i", lesson: 2 },
+                { question: "🎯 Sarah gave the book to ___ (referring to yourself)", answer: "me", lesson: 3 },
+                { question: "🔄 Right now, I ___ feeling very happy", answer: "am", lesson: 4 },
+                { question: "🔢 Write the number 25 in words", answer: "twenty five", lesson: 5 },
+                { question: "📝 This is ___ English book that I bought yesterday", answer: "my", lesson: 6 },
+                { question: "📝 This English book is ___ (it belongs to me)", answer: "mine", lesson: 7 },
+                { question: "👉 ___ book right here is very interesting", answer: "this", lesson: 8 },
+                { question: "👤 ___ is playing football in the park", answer: "he", lesson: 2 },
+                { question: "🎯 I saw John yesterday and waved to ___", answer: "him", lesson: 3 }
+            ];
+        } else if (startLesson === 9 && endLesson === 16) {
+            // Revision 2: Lessons 9-16 - 10 questions
+            return [
+                { question: "👉 ___ is my favorite English book", answer: "this", lesson: 9 },
+                { question: "🔄 I accidentally cut ___ while cooking", answer: "myself", lesson: 10 },
+                { question: "⏰ She ___ here yesterday for the lesson", answer: "was", lesson: 11 },
+                { question: "📅 Which day comes after Monday?", answer: "tuesday", lesson: 12 },
+                { question: "🔄 I have ___ waiting for the bus for 30 minutes", answer: "been", lesson: 13 },
+                { question: "📖 I saw ___ elephant at the zoo", answer: "an", lesson: 14 },
+                { question: "👤 ___ am learning English every day", answer: "i", lesson: 15 },
+                { question: "👤 ___ are doing great in this course", answer: "you", lesson: 16 },
+                { question: "🔄 He built the entire house by ___", answer: "himself", lesson: 10 },
+                { question: "📖 ___ sun is very bright today", answer: "the", lesson: 14 }
+            ];
+        } else if (startLesson === 17 && endLesson === 23) {
+            // Revision 3: Lessons 17-23 - 10 questions
+            return [
+                { question: "👤 ___ is very tall and plays basketball", answer: "he", lesson: 17 },
+                { question: "👤 ___ is teaching our English class", answer: "she", lesson: 18 },
+                { question: "👤 ___ is raining heavily outside", answer: "it", lesson: 19 },
+                { question: "👥 ___ are studying together for the exam", answer: "we", lesson: 20 },
+                { question: "👥 ___ are waiting outside the classroom", answer: "they", lesson: 21 },
+                { question: "❓ ___ you like learning English?", answer: "do", lesson: 22 },
+                { question: "🔧 I ___ speak three languages fluently", answer: "can", lesson: 23 },
+                { question: "👤 That is ___ brother over there", answer: "my", lesson: 17 },
+                { question: "❓ ___ she understand the lesson?", answer: "does", lesson: 22 },
+                { question: "🔧 You ___ practice English every day", answer: "should", lesson: 23 }
+            ];
+        } else if (startLesson === 1 && endLesson === 23) {
+            // Final Revision: All lessons - 10 mixed questions
+            return [
+                { question: "🔤 Which letter comes right after 'B'?", answer: "c", lesson: 1 },
+                { question: "👤 ___ are going to the cinema together", answer: "we", lesson: 2 },
+                { question: "🎯 We called our friends and invited ___ to the party", answer: "them", lesson: 3 },
+                { question: "🔄 She ___ working as a doctor at the hospital", answer: "is", lesson: 4 },
+                { question: "📝 This handbag is ___ (it belongs to her)", answer: "hers", lesson: 7 },
+                { question: "👉 ___ are my best friends from school", answer: "these", lesson: 9 },
+                { question: "🔄 We really enjoyed ___ at the party", answer: "ourselves", lesson: 10 },
+                { question: "📅 What is the first day of the week?", answer: "monday", lesson: 12 },
+                { question: "👤 This is ___ house where we live", answer: "our", lesson: 20 },
+                { question: "🔧 They ___ arrive late because of traffic", answer: "might", lesson: 23 }
+            ];
+        }
+        return [];
     }
-    
-    return questions;
-}
+
     handleMessage(userId, message) {
         if (!this.users.has(userId)) {
             this.users.set(userId, {
@@ -390,7 +358,8 @@ class EnglishLearningBot {
         const user = this.users.get(userId);
         const cleanMessage = message.toLowerCase().trim();
 
-        if (cleanMessage === 'menu') {
+        // Handle menu command - MULTIPLE OPTIONS
+        if (cleanMessage === 'lessons' || cleanMessage === 'menu' || cleanMessage === 'more' || cleanMessage === 'options' || cleanMessage === 'help') {
             return this.showMainMenu(user);
         }
 
@@ -468,7 +437,7 @@ class EnglishLearningBot {
 
 📊 *Progress: ${completed}/${this.totalMainLessons} lessons (${progress}%)*
 
-Type any lesson name or "menu" for help!`;
+*Type "lessons" for this menu anytime!*`;
 
         return menu;
     }
@@ -478,14 +447,14 @@ Type any lesson name or "menu" for help!`;
         let menu = `📚 *REVISION SESSIONS* 📚\n\n`;
 
         if (completed >= 8) {
-            menu += `• "revision 1" - Lessons 1-8\n`;
+            menu += `• "revision 1" - Lessons 1-8 (10 questions)\n`;
         }
         if (completed >= 16) {
-            menu += `• "revision 2" - Lessons 9-16\n`;
+            menu += `• "revision 2" - Lessons 9-16 (10 questions)\n`;
         }
         if (completed >= 23) {
-            menu += `• "revision 3" - Lessons 17-23\n`;
-            menu += `• "final revision" - All 23 lessons\n`;
+            menu += `• "revision 3" - Lessons 17-23 (10 questions)\n`;
+            menu += `• "final revision" - All 23 lessons (10 questions)\n`;
         }
 
         if (menu === `📚 *REVISION SESSIONS* 📚\n\n`) {
@@ -493,7 +462,7 @@ Type any lesson name or "menu" for help!`;
             menu += `Currently completed: ${completed}/23 lessons`;
         }
 
-        menu += `\nType "menu" for main menu`;
+        menu += `\nType "lessons" for main menu`;
         return menu;
     }
 
@@ -511,9 +480,9 @@ Type any lesson name or "menu" for help!`;
                 24: "Lessons 1-8 Revision",
                 25: "Lessons 9-16 Revision", 
                 26: "Lessons 17-23 Revision",
-                27: "FINAL EXAM - All Lessons"
+                27: "FINAL REVIEW - All Lessons"
             };
-            return `📚 *${revisionNames[lessonNum]}* (${totalQuestions} questions)\n\n${this.getCurrentQuestion(userId)}`;
+            return `📚 *${revisionNames[lessonNum]}* (10 questions)\n\n${this.getCurrentQuestion(userId)}`;
         } else {
             return `🎯 *Starting Lesson ${lessonNum}* (7 questions)\n\n${this.getCurrentQuestion(userId)}`;
         }
@@ -555,7 +524,7 @@ Type any lesson name or "menu" for help!`;
                         24: "Lessons 1-8 Revision",
                         25: "Lessons 9-16 Revision",
                         26: "Lessons 17-23 Revision", 
-                        27: "FINAL EXAM"
+                        27: "FINAL REVIEW"
                     };
                     completionMsg += `🎊 *${revisionNames[user.currentLesson]} Completed!*\n`;
                 } else {
@@ -575,7 +544,7 @@ Type any lesson name or "menu" for help!`;
                     completionMsg += `Great progress! ${completed}/23 lessons done.\n`;
                     completionMsg += "Type 'revision' for practice tests!";
                 } else {
-                    completionMsg += "Type 'menu' for more lessons!";
+                    completionMsg += "Type 'lessons' for more lessons!";
                 }
                 
                 return completionMsg;
@@ -630,4 +599,3 @@ const PORT = process.env.PORT || 10000;
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`🚀 Bot server running on port ${PORT}`);
 });
-
