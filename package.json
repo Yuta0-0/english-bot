@@ -1,0 +1,17 @@
+{
+  "name": "whatsapp-english-bot",
+  "version": "1.0.0",
+  "description": "English Learning WhatsApp Bot",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js",
+    "dev": "nodemon bot.js"
+  },
+  "dependencies": {
+    "express": "^4.18.0",
+    "twilio": "^4.0.0"
+  },
+  "engines": {
+    "node": "18.x"
+  }
+}
