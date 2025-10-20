@@ -195,8 +195,7 @@ app.get('/', (req, res) => {
 });
 
 // Start server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+const PORT = process.env.PORT || 10000;
+app.listen(PORT, '0.0.0.0', () => {
     console.log(`🚀 Bot server running on port ${PORT}`);
-    console.log(`📍 Local URL: http://localhost:${PORT}`);
 });
