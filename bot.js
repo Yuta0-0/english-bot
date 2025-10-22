@@ -687,3 +687,4 @@ ${this.getCurrentQuestion(userId)}`;
             if (user.currentQuestion >= totalQuestions) {
                 // Mark regular lessons as completed
                 if (user.currentLesson >= 1 && user
+
