@@ -686,5 +686,151 @@ ${this.getCurrentQuestion(userId)}`;
             // Check if lesson completed
             if (user.currentQuestion >= totalQuestions) {
                 // Mark regular lessons as completed
-                if (user.currentLesson >= 1 && user
+                if (user.currentLesson >= 1 && user.currentLesson <= 23) {
+                    user.completedLessons.add(user.currentLesson);
+                    
+                    // Check for achievements
+                    if (user.completedLessons.size === 1) {
+                        user.achievements.add('first_lesson');
+                    }
+                    if (user.completedLessons.size === this.totalMainLessons) {
+                        user.achievements.add('grammar_master');
+                    }
+                }
+                
+                // Daily challenge completion
+                if (user.currentLesson === 28) {
+                    user.totalScore += this.dailyChallenges.points;
+                    user.achievements.add('speed_demon');
+                }
+                
+                // Perfect score achievement
+                if (user.score === totalQuestions) {
+                    user.achievements.add('perfect_score');
+                    user.totalScore += 20; // Bonus for perfect score
+                }
 
+                const completionMsg = this.getLessonCompletionMessage(user);
+                user.currentLesson = 0;
+                user.currentQuestion = 0;
+                return `✅ Correct! ${completionMsg}`;
+            } else {
+                return `✅ Correct! 🎉 +10 points\n\n${this.getCurrentQuestion(userId)}`;
+            }
+        } else {
+            user.currentQuestion++;
+            
+            if (user.currentQuestion >= totalQuestions) {
+                const completionMsg = this.getLessonCompletionMessage(user);
+                user.currentLesson = 0;
+                user.currentQuestion = 0;
+                return `❌ Incorrect. The answer was: "${correctAnswer}"\n\n${completionMsg}`;
+            } else {
+                return `❌ Incorrect. The answer was: "${correctAnswer}"\n\n${this.getCurrentQuestion(userId)}`;
+            }
+        }
+    }
+
+    getLessonCompletionMessage(user) {
+        const score = user.score;
+        const totalQuestions = this.lessons[user.currentLesson].length;
+        const accuracy = Math.round((score / totalQuestions) * 100);
+        
+        let message = `📊 *Lesson Complete!*\nScore: ${score}/${totalQuestions} (${accuracy}%)`;
+        
+        if (accuracy === 100) {
+            message += "\n🎉 Perfect! +20 bonus points!";
+        } else if (accuracy >= 80) {
+            message += "\n👍 Great job!";
+        } else if (accuracy >= 60) {
+            message += "\n💪 Good effort!";
+        } else {
+            message += "\n📚 Keep practicing!";
+        }
+        
+        // Update streak
+        const today = new Date().toDateString();
+        const lastActive = user.lastActive.toDateString();
+        if (today !== lastActive) {
+            user.streak++;
+            if (user.streak >= 7) {
+                user.achievements.add('week_streak');
+            }
+        }
+        
+        return message;
+    }
+
+    showRevisionMenu(user) {
+        const completed = user.completedLessons.size;
+        let availableRevisions = [];
+        
+        if (completed >= 8) availableRevisions.push('"revision 1" (Lessons 1-8)');
+        if (completed >= 16) availableRevisions.push('"revision 2" (Lessons 9-16)');
+        if (completed >= 23) {
+            availableRevisions.push('"revision 3" (Lessons 17-23)');
+            availableRevisions.push('"final revision" (All Lessons)');
+        }
+        
+        if (availableRevisions.length === 0) {
+            return `📚 *Revision Sessions*\n\nComplete more lessons to unlock revision tests!\nCurrently completed: ${completed}/23 lessons needed`;
+        }
+        
+        return `📚 *Available Revision Sessions:*\n\n${availableRevisions.join('\n')}\n\n💡 Type the revision name to start!`;
+    }
+}
+
+// ========== EXPRESS ROUTES ==========
+const bot = new EnglishLearningBot();
+
+app.post('/webhook', (req, res) => {
+    const { userId, message } = req.body;
+    
+    if (!userId || !message) {
+        return res.status(400).json({ error: 'userId and message are required' });
+    }
+    
+    try {
+        const response = bot.handleMessage(userId, message);
+        res.json({ response });
+    } catch (error) {
+        console.error('Error handling message:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+app.get('/user/:userId/progress', (req, res) => {
+    const userId = req.params.userId;
+    
+    if (!bot.users.has(userId)) {
+        return res.status(404).json({ error: 'User not found' });
+    }
+    
+    const user = bot.users.get(userId);
+    res.json({
+        userId,
+        completedLessons: Array.from(user.completedLessons),
+        totalScore: user.totalScore,
+        streak: user.streak,
+        achievements: Array.from(user.achievements),
+        accuracy: user.totalAnswers > 0 ? Math.round((user.correctAnswers / user.totalAnswers) * 100) : 0
+    });
+});
+
+// Health check endpoint
+app.get('/health', (req, res) => {
+    res.json({ 
+        status: 'OK', 
+        users: bot.users.size,
+        uptime: process.uptime()
+    });
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`🚀 English Learning Bot running on port ${PORT}`);
+    console.log(`📚 Loaded ${Object.keys(bot.lessons).length} lessons`);
+    console.log(`👥 Ready for ${bot.users.size} users`);
+});
+
+module.exports = app;
