@@ -417,7 +417,7 @@ class EnglishLearningBot {
         }
 
         const user = this.users.get(userId);
-        const cleanMessage = message.toLowerCase().trim();
+        const cleanMessage = (message || '').toLowerCase().trim();
 
         user.lastActive = new Date();
 
@@ -566,9 +566,12 @@ ${this.dailyChallenges.question}
 
         let leaderboard = `🏆 *TOP LEARNERS* 🏆\n\n`;
         
-        topUsers.forEach((user, index) {
+        // FIXED: arrow function used here (previous code had a syntax error)
+        topUsers.forEach((user, index) => {
             const medal = index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : '📚';
-            leaderboard += `${medal} Student ${user.id.slice(-4)}: ${user.score} pts\n`;
+            // guard: ensure id is string before slicing
+            const idDisplay = String(user.id).slice(-4);
+            leaderboard += `${medal} Student ${idDisplay}: ${user.score} pts\n`;
         });
 
         leaderboard += `\n💪 Keep learning to climb the ranks!`;
@@ -637,7 +640,7 @@ ${this.getCurrentQuestion(userId)}`;
         user.score = 0;
 
         const lesson = this.lessons[lessonNum];
-        const totalQuestions = lesson.length;
+        const totalQuestions = lesson ? lesson.length : 0;
         
         if (lessonNum >= 24 && lessonNum <= 27) {
             const revisionNames = {
@@ -658,6 +661,18 @@ ${this.getCurrentQuestion(userId)}`;
     getCurrentQuestion(userId) {
         const user = this.users.get(userId);
         const lesson = this.lessons[user.currentLesson];
+
+        // SAFETY: if lesson is missing return a fallback menu
+        if (!lesson || !Array.isArray(lesson) || lesson.length === 0) {
+            user.currentLesson = 0;
+            user.currentQuestion = 0;
+            return this.showEnhancedMenu(user);
+        }
+
+        // guard currentQuestion index
+        if (user.currentQuestion < 0) user.currentQuestion = 0;
+        if (user.currentQuestion >= lesson.length) user.currentQuestion = lesson.length - 1;
+
         const question = lesson[user.currentQuestion];
         const totalQuestions = lesson.length;
         
@@ -667,11 +682,19 @@ ${this.getCurrentQuestion(userId)}`;
     checkAnswer(userId, userAnswer) {
         const user = this.users.get(userId);
         const lesson = this.lessons[user.currentLesson];
+
+        // safety guard
+        if (!lesson || !lesson[user.currentQuestion]) {
+            user.currentLesson = 0;
+            user.currentQuestion = 0;
+            return this.showEnhancedMenu(user);
+        }
+
         const currentQuestion = lesson[user.currentQuestion];
-        const correctAnswer = currentQuestion.answer.toLowerCase().trim();
+        const correctAnswer = String(currentQuestion.answer).toLowerCase().trim();
         const totalQuestions = lesson.length;
 
-        const cleanUserAnswer = userAnswer.replace(/[^a-zA-Z0-9\s]/g, '').toLowerCase().trim();
+        const cleanUserAnswer = String(userAnswer).replace(/[^a-zA-Z0-9\s]/g, '').toLowerCase().trim();
         const cleanCorrectAnswer = correctAnswer.replace(/[^a-zA-Z0-9\s]/g, '').toLowerCase().trim();
 
         // Track stats
