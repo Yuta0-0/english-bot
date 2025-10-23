@@ -12,21 +12,9 @@ class EnglishLearningBot {
         this.totalMainLessons = 23;
 
         // Initialize in correct order
-        this.achievements = this.createAchievements();
         this.lessonKeywords = this.createLessonKeywords();
-        this.dailyChallenges = this.createDailyChallenges(); // Move this before createLessons
+        this.dailyChallenges = this.createDailyChallenges();
         this.lessons = this.createLessons();
-    }
-
-    createAchievements() {
-        return {
-            'first_lesson': { name: "🚀 First Steps", desc: "Complete your first lesson" },
-            'grammar_master': { name: "📚 Grammar Master", desc: "Complete all grammar lessons" },
-            'perfect_score': { name: "🏆 Perfect Score", desc: "Get 100% on any lesson" },
-            'week_streak': { name: "🔥 7-Day Streak", desc: "Practice for 7 consecutive days" },
-            'speed_demon': { name: "⚡ Speed Demon", desc: "Complete a lesson in under 2 minutes" },
-            'community_help': { name: "👥 Community Helper", desc: "Help 3 other students" }
-        };
     }
 
     createDailyChallenges() {
@@ -35,7 +23,9 @@ class EnglishLearningBot {
             { id: 2, question: "🔄 Use 'have been' in a sentence", answer: "i have been learning", points: 15 },
             { id: 3, question: "📝 What's the past tense of 'go'?", answer: "went", points: 10 },
             { id: 4, question: "🔢 Write 247 in words", answer: "two hundred forty seven", points: 12 },
-            { id: 5, question: "👥 Complete: ___ are my friends", answer: "they", points: 8 }
+            { id: 5, question: "👥 Complete: ___ are my friends", answer: "they", points: 8 },
+            { id: 6, question: "📚 What's the plural of 'child'?", answer: "children", points: 10 },
+            { id: 7, question: "🔤 Spell 'necessary'", answer: "necessary", points: 12 }
         ];
         const today = new Date().getDate() % challenges.length;
         return challenges[today];
@@ -71,7 +61,6 @@ class EnglishLearningBot {
             'revision 3': 26, 'review 3': 26, 'test 3': 26,
             'final revision': 27, 'final test': 27, 'exam': 27,
             'daily': 28, 'challenge': 28, 'daily challenge': 28,
-            'achievements': 29, 'badges': 29, 'achievement': 29,
             'leaderboard': 30, 'rank': 30, 'top': 30,
             'progress': 31, 'stats': 31, 'statistics': 31,
             'study group': 32, 'community': 32, 'group': 32,
@@ -108,12 +97,11 @@ class EnglishLearningBot {
             21: [{ question: "👥 ___ are coming", answer: "they" }],
             22: [{ question: "❓ ___ you like coffee?", answer: "do" }],
             23: [{ question: "🔧 I ___ speak English", answer: "can" }],
-            24: [{ question: "🔤 Revision Question 1", answer: "answer" }],
-            25: [{ question: "🔤 Revision Question 2", answer: "answer" }],
-            26: [{ question: "🔤 Revision Question 3", answer: "answer" }],
-            27: [{ question: "🔤 Final Revision Question", answer: "answer" }],
+            24: [{ question: "🔤 Revision 1: Which is correct - 'a apple' or 'an apple'?", answer: "an apple" }],
+            25: [{ question: "🔤 Revision 2: Complete: She ___ going to school", answer: "is" }],
+            26: [{ question: "🔤 Revision 3: What are subject pronouns?", answer: "i you he she it we they" }],
+            27: [{ question: "🔤 Final Revision: Make a sentence with 'I', 'am', and 'student'", answer: "i am a student" }],
             28: [{ question: currentDailyChallenge.question, answer: currentDailyChallenge.answer }],
-            29: [{ question: "🏆 View your achievements", answer: "view" }],
             30: [{ question: "📊 View leaderboard", answer: "view" }],
             31: [{ question: "📈 View your progress", answer: "view" }],
             32: [{ question: "👥 Join study community", answer: "join" }],
@@ -121,7 +109,9 @@ class EnglishLearningBot {
                 { question: "⚡ Quick practice session", answer: "start" },
                 { question: "🔤 Letter after 'A'?", answer: "b" },
                 { question: "👤 ___ am student", answer: "i" },
-                { question: "🔄 Past tense of go?", answer: "went" }
+                { question: "🔄 Past tense of go?", answer: "went" },
+                { question: "📝 This is ___ book", answer: "my" },
+                { question: "🔢 Write 15 in words", answer: "fifteen" }
             ]
         };
     }
@@ -158,6 +148,16 @@ class EnglishLearningBot {
             return this.showProgress(userId);
         }
 
+        // Leaderboard command
+        if (lower === 'leaderboard' || lower === 'rank') {
+            return this.showLeaderboard();
+        }
+
+        // Community command
+        if (lower === 'community' || lower === 'group') {
+            return this.showCommunity();
+        }
+
         // Lesson keyword detection
         const lessonNum = this.getLessonByKeyword(lower);
         if (lessonNum) {
@@ -165,13 +165,18 @@ class EnglishLearningBot {
             user.currentQuestion = 0;
             const lesson = this.lessons[lessonNum];
             if (lesson && lesson[0]) {
-                return lesson[0].question;
+                return `📚 LESSON ${lessonNum} 📚\n\n${lesson[0].question}\n\n*Type your answer:*`;
             }
         }
 
         // Quick practice mode
         if (lower === 'quick practice' || lower === 'practice') {
             return this.startQuickPractice(userId);
+        }
+
+        // Daily challenge
+        if (lower === 'daily' || lower === 'daily challenge') {
+            return this.startDailyChallenge(userId);
         }
 
         // Answer checking
@@ -198,10 +203,13 @@ class EnglishLearningBot {
 • "quick practice" - Rapid exercises
 • "daily challenge" - Today's special challenge
 • "revision 1" - Review lessons 1-8
+• "revision 2" - Review lessons 9-16  
+• "revision 3" - Review lessons 17-23
+• "final revision" - Complete review
 
 📊 *Progress & Social:*
 • "progress" - Your learning stats
-• "achievements" - Your badges
+• "leaderboard" - Top rankings
 • "community" - Study groups
 
 💡 *Tip:* Type any lesson name to start learning!`;
@@ -225,6 +233,22 @@ ${lesson[0].question}
         return "Quick practice is currently unavailable. Try another lesson!";
     }
 
+    startDailyChallenge(userId) {
+        const user = this.getUser(userId);
+        user.currentLesson = 28;
+        user.currentQuestion = 0;
+        user.score = 0;
+
+        const challenge = this.dailyChallenges;
+        return `📅 *DAILY CHALLENGE* 📅
+        
+${challenge.question}
+
+*Prize: ${challenge.points} points!*
+
+*Type your answer:*`;
+    }
+
     checkAnswer(userId, answer) {
         const user = this.getUser(userId);
         const lesson = this.lessons[user.currentLesson];
@@ -237,21 +261,32 @@ ${lesson[0].question}
         const correctAnswer = currentQ.answer.toLowerCase().trim();
         user.totalAnswers++;
 
-        if (answer === correctAnswer) {
+        // Normalize answers for comparison
+        const normalizedAnswer = answer.toLowerCase().trim().replace(/\s+/g, ' ');
+        const normalizedCorrect = correctAnswer.toLowerCase().trim().replace(/\s+/g, ' ');
+
+        if (normalizedAnswer === normalizedCorrect) {
             user.correctAnswers++;
-            user.score += 10;
-            user.totalScore += 10;
+            
+            // Calculate points based on lesson type
+            let points = 10;
+            if (user.currentLesson === 28) { // Daily challenge
+                points = this.dailyChallenges.points;
+            }
+            
+            user.score += points;
+            user.totalScore += points;
             user.currentQuestion++;
 
             if (user.currentQuestion >= lesson.length) {
                 user.completedLessons.add(user.currentLesson);
-                const completionMessage = `✅ Correct!\n🎉 Lesson complete! You earned ${user.score} points.\n\nType "menu" to continue.`;
+                const completionMessage = `✅ Correct! +${points} points!\n🎉 Lesson complete! You earned ${user.score} points.\n\nType "menu" to continue.`;
                 user.currentLesson = 0;
                 user.currentQuestion = 0;
                 return completionMessage;
             }
 
-            return `✅ Correct! +10 points\n\n${lesson[user.currentQuestion].question}`;
+            return `✅ Correct! +${points} points!\n\n${lesson[user.currentQuestion].question}`;
         } else {
             return `❌ Incorrect. Try again!\n\n${currentQ.question}`;
         }
@@ -276,6 +311,30 @@ ${lesson[0].question}
 🔥 Current Streak: ${user.streak} days
 
 💡 Keep going! You're doing great!`;
+    }
+
+    showLeaderboard() {
+        return `🏆 *LEADERBOARD* 🏆
+
+🥇 User123 - 1,250 points
+🥇 LearnMaster - 980 points  
+🥉 EnglishPro - 850 points
+4.  GrammarGuru - 720 points
+5.  WordWizard - 680 points
+
+💪 Complete lessons to climb the ranks!`;
+    }
+
+    showCommunity() {
+        return `👥 *STUDY COMMUNITY* 👥
+
+🌐 Join our groups:
+• Telegram: t.me/englishlearners
+• Discord: discord.gg/english
+• WhatsApp: +1234567890
+
+📚 Study together and improve faster!
+Share tips and help each other learn.`;
     }
 }
 
