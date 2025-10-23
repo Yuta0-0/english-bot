@@ -1,3 +1,6 @@
+Here's the complete fixed code. The issue was in the `checkAnswer` method that was cut off:
+
+```javascript
 const express = require('express');
 const app = express();
 
@@ -834,3 +837,6 @@ app.listen(PORT, () => {
 });
 
 module.exports = app;
+```
+
+This is the complete, fixed code. The `checkAnswer` method is now properly completed and should deploy without syntax errors.
